@@ -1,22 +1,20 @@
 # React Using Callbacks to Pass Information Lab
 
-
 ## Objectives
 
 1. Practice using state, props, and events
 2. Practice using callbacks to effect change up and down the component tree
 
-
 ## Introduction
 
 In React, **props** are used to pass information _down_ the component tree, from
-parents to children. In order to propagate information in the opposite
+parents to children. **In order to propagate information in the opposite
 direction, we can use callback functions that are passed from parent components
-to children.
+to children.**
 
-This allows the callback to be _owned_ by a different component than the one
-invoking it. Once invoked, the callback can effect change in the component that
-owns it, instead of the component that called it.
+This allows the **callback to be _owned_ by a different component than the one
+invoking it**. Once invoked, **the callback can effect change in the component that
+owns it, instead of the component that called it**.
 
 For this lab, we have three components:
 
@@ -32,40 +30,42 @@ component providing the user interface to select a specific color, we need _some
 way_ for `Cell` to know about the currently selected color. To do this, we will
 have the parent component, `Matrix`, keep track of the current selected color.
 
-Because passing information between children components is taboo in React, (i.e.
+**Because passing information between children components is taboo in React**, (i.e.
 passing information between `ColorSelector` and a `Cell`), we need to make sure
 that the following is implemented:
 
-- `ColorSelector` has a way to set some 'selected color' in `Matrix` when a user selects a color
-- `Cell` has a way to know what the current selected color is when it is clicked
+- **`ColorSelector` has a way to set some 'selected color' in `Matrix` when a user selects a color**
+- **`Cell` has a way to know what the current selected color is when it is clicked**
+- **In other words, we need our sibling components to have the same data available to them at the same moment in time**
+-
 
 Using callbacks, we can do both of these things pretty easily!
 
 ## Deliverables
 
 #### `Matrix`
+
 - provide a way for `Matrix` to keep track of the selected color (think state!)
 - write a method that takes in a single argument of a hex color string (i.e.
-'#fff') and sets the selected color to that
+  '#fff') and sets the selected color to that
 - consider what should be done with that method once it is written. Who needs it?
-How can we get it to them? Use the skills you already have with React to solve
-this
+  How can we get it to them? Use the skills you already have with React to solve
+  this
 
 #### `ColorSelector`
 
 - update `makeColorSwatches` to provide the `<div>`s it is rendering with _some
-way_ to fire off that method we wrote for Matrix (hint: consider using an event
-listener and controlling the argument when an event handler is fired)
+  way_ to fire off that method we wrote for Matrix (hint: consider using an event
+  listener and controlling the argument when an event handler is fired)
 
 #### `Cell`
 
 - find a way to access the currently selected color from `Matrix`'s state
-_without_ passing the value explicitly as a prop. (Consider passing a method
-from `Matrix` to `Cell` instead. You will want to create an additional method in
-Matrix to do this.)
+  _without_ passing the value explicitly as a prop. (Consider passing a method
+  from `Matrix` to `Cell` instead. You will want to create an additional method in
+  Matrix to do this.)
 - implement a `handleClick` method that that updates the `Cell`'s state with the
-current selected color
-
+  current selected color
 
 #### Once Finished
 
